@@ -1,0 +1,18 @@
+<div class="bg">
+  <ul class="card-list">
+    <li *ngFor="let product of products" class="card-list-item">
+      <a routerLink="/product/{{product.id}}" class="card-link">
+        <mat-card class="card">
+          <mat-card-content class="card-content">
+            <div class="card-title">
+              {{product.name}}
+            </div>
+            <div class="card-subtitle">
+              Price: {{product.price|price}}
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </li>
+  </ul>
+</div>

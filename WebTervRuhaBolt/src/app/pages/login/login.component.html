@@ -1,0 +1,17 @@
+
+<form [formGroup]="loginForm"  (ngSubmit)="login()">
+  <h1>Bejelentkezes</h1>
+  <br>
+  <mat-form-field>
+    <mat-label>A felhasználoneved</mat-label>
+    <input matInput formControlName="name" placeholder="Add meg a felhasználóneved">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>A jelszavad</mat-label>
+    <input matInput formControlName="password"  placeholder="Add meg a jelszavad">
+  </mat-form-field>
+  <br>
+  <button mat-flat-button color="primary" type="submit" class="add-button">Belépés</button>
+</form>
+

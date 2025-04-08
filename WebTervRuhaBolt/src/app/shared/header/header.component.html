@@ -1,0 +1,35 @@
+<header>
+  <ul>
+    <li>
+      <a mat-list-item href="#" routerLink="/">
+        <mat-icon matListItemIcon></mat-icon>
+        <span matListItemTitle>Home</span>
+      </a>
+    </li>
+    <li *ngIf="login">
+      <a href="#" routerLink="/addproduct">
+        <mat-icon matListItemIcon></mat-icon>
+        <span matListItemTitle>Add Product</span>      </a>
+    </li>
+      <li *ngIf="login">
+        <a href="#" routerLink="/profile">
+          <mat-icon matListItemIcon></mat-icon>
+          <span matListItemTitle>Profile</span>      </a>
+      </li>
+    <li *ngIf="login">
+      <a href="#" (click)="logout()">
+        <mat-icon matListItemIcon></mat-icon>
+        <span matListItemTitle>LogOut</span>      </a>
+    </li>
+    <li *ngIf="!login">
+      <a href="#" routerLink="/login">
+        <mat-icon matListItemIcon></mat-icon>
+        <span matListItemTitle>Login</span>      </a>
+    </li>
+    <li *ngIf="!login">
+    <a href="#" routerLink="/SignIn">
+      <mat-icon matListItemIcon></mat-icon>
+      <span matListItemTitle>Sign In</span>      </a>
+  </li>
+  </ul>
+</header>
