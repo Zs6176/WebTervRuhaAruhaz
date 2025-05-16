@@ -1,10 +1,10 @@
 
-<form [formGroup]="signInForm"  (ngSubmit)="signIn()">
+<form [formGroup]="signInForm"  (ngSubmit)="changeProfile()">
   <h1>Regisztrácio</h1>
   <br>
   <mat-form-field>
     <mat-label>A felhasználoneved</mat-label>
-    <input matInput formControlName="name" placeholder="Add meg a felhasználóneved" type="text">
+    <input matInput formControlName="name" placeholder="Add meg a felhasználóneved" type="text" (cdkAutofill)="user!.name">
   </mat-form-field>
   <br>
   <mat-form-field>
@@ -14,7 +14,7 @@
   <br>
   <mat-form-field>
     <mat-label>A email cim</mat-label>
-    <input matInput formControlName="email"  placeholder="Add meg a email címed" type="email">
+    <input matInput formControlName="email"  placeholder="Add meg a email címed" type="email" autocomplete=user!.email>
   </mat-form-field>
   <br>
   <button mat-flat-button color="primary" type="submit" class="add-button">Belépés</button>

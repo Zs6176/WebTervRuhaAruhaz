@@ -1,65 +1,53 @@
 import { Injectable } from '@angular/core';
 import {User} from '../models/User';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/compat/firestore';
+import {Observable} from 'rxjs';
+import {addDoc, collection, Firestore, getDocs, limit, query, where} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private users: User[]=[];
-  constructor() {
-    const data = localStorage.getItem('users');
-    this.users = data ? JSON.parse(data) : [];
+  private users: any;
+
+
+  constructor(private afs: AngularFirestore,public firestore: Firestore) {
   }
 
-  userexist(name: string){
-    if(this.users==undefined || this.users.length == 0){
-      return false;
-    }else {
-      for (let i = 0; i < this.users.length; i++) {
-        if (this.users[i].name == name) {
-          return true;
-        }
-      }
-      return false;
-    }
+  async getUsers(){
+    return (
+      await getDocs(query(collection(this.firestore, 'User')))
+    ).docs.map((User) => User.data() as User);
   }
 
-  setUser(user: User){
-    if(this.users==undefined || this.users.length == 0){
-      this.users=[];
-      this.users.push(user);
-    }else {
-      this.users.push(user);
-    }
+  async getUserById(id: string){
+    return (
+      await getDocs(query(collection(this.firestore, 'User'), where('id', '==', id), limit(1)))
+    ).docs.map((User) => User.data() as User)
   }
 
-  setUsers(users: User[]){
-    this.users = users;
+  async create(user: User) {
+    const docRef = await addDoc(collection(this.firestore, 'User'), {
+      email: user.email,
+      id: user.id,
+      isAdmin: user.isAdmin,
+      name: user.name,
+    });
+    console.log("Document written with ID: ", docRef.id);
   }
-  getUser(name:string): User | undefined{
-    for(let i=0; i<this.users.length; i++){
-      if(this.users[i].name == name){
-        return this.users[i];
-      }
-    }
-    return undefined;
+
+  async deleteUserById(userId: String) {
+    return await this.afs.doc(`User/${userId}`).delete();
   }
-  getUserWithPassword(name:string,password:string): User[]{
-    return this.users.filter(user => user.name == name||user.password == password);
-  }
-  getUsers(){
-    return this.users;
-  }
-  getLastUserId(){
-    if(this.users==undefined || this.users.length == 0){
-      return 0;
-    }
-    return this.users.length-1;
-  }
-  addLocalStorage(){
-    localStorage.setItem('users', JSON.stringify(this.users));
-  }
-  newUser(name: string, password: string): User{
-    return new User(this.getLastUserId(), name, password);
+
+  async updateUser(user: User,) {
+    return this.afs
+      .collection<User>('User')
+      .doc(user.id.toString())
+      .update({
+        id: user.id,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      })
   }
 }

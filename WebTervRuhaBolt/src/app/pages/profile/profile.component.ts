@@ -14,6 +14,9 @@ export class ProfileComponent {
   constructor(private router:Router,private profileService: ProfileService) {
     this.profile=this.profileService.getProfile();
   }
-
+  profileChange(){
+    this.profileService.addLocalStorage();
+    this.router.navigate(['/profileChange']);
+  }
 
 }

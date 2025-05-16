@@ -7,6 +7,7 @@ import {AddProductComponent} from './pages/add-product/add-product.component';
 import {LoginComponent} from './pages/login/login.component';
 import {SignInComponent} from './pages/sign-in/sign-in.component';
 import {ProfileComponent} from './pages/profile/profile.component';
+import {ProfileChangeComponent} from './pages/profile-change/profile-change.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'product/:productId', component: ProductComponent},
   { path: 'login', component: LoginComponent },
   { path: 'SignIn', component: SignInComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'profileChange', component: ProfileChangeComponent },
 ];
 
 @NgModule({

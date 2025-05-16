@@ -12,9 +12,40 @@ import {ActivatedRoute} from '@angular/router';
 export class HomeComponent {
   @Input() products: Product[] =[];
   @Output() data: Product[] =this.products;
-  constructor (private productService: ProductService, private route:ActivatedRoute){
-    this.productService.getAllProducts().forEach((product: Product) => {this.products.push(product)});
-    console.log(this.products);
-  }
 
+  constructor (private productService: ProductService, private route:ActivatedRoute){}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+          (
+            this.productService.getAllProducts().subscribe(products => {
+              this.products = products;
+            }));
+          console.log(this.products);
+      }
+    )
+  }
+  ngOnChanges(){
+
+  }
+  desc(){
+    this.route.params.subscribe(params => {
+        (
+          this.productService.descProduct().then(products => {
+            this.products = products;
+          }));
+        console.log(this.products);
+      }
+    )
+  }
+  asc(){
+    this.route.params.subscribe(params => {
+        (
+          this.productService.ascProduct().then(products => {
+            this.products = products;
+          }));
+        console.log(this.products);
+      }
+    )
+  }
 }

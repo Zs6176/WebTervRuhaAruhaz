@@ -1,11 +1,12 @@
 export class User {
-  id:number;
-  name: string;
-  password: string;
+  id!:string;
+  email!: string;
+  isAdmin!: boolean;
+  name!: string;
 
-  constructor(id:number, name: string, password: string) {
-    this.id = id;
-    this.name = name;
-    this.password = password;
+  constructor(email:string,isAdmin:boolean,name:string) {
+    this.email=email;
+    this.isAdmin=isAdmin;
+    this.name=name;
   }
 }

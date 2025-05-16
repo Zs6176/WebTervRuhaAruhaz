@@ -1,8 +1,18 @@
 <div id="host">
   <div id="wrapper">
     <div id="left">
+      Név:
       <label id="name">{{profile.user?.name}}</label>
     </div>
-
+    <div id="left">
+      Email:
+      <label id="name">{{profile.user?.email}}</label>
+    </div>  <div id="left">
+      Admin vagyok:
+    <label id="name">{{profile.user!.isAdmin|igazHamis}}</label>
   </div>
+  </div>
+  <div id="left">
+  <button mat-flat-button color="primary" type="submit" class="add-button" (click)="profileChange()">Profil Szerkesztese</button>
+</div>
 </div>

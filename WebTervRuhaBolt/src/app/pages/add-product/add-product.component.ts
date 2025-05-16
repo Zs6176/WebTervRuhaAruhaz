@@ -29,7 +29,7 @@ export class AddProductComponent {
 
   addProduct() {
     if (this.productForm.valid) {
-      this.productService.newProduct(this.productForm.value.name, this.productForm.value.number)
+      this.productService.createProduct(new Product(this.productForm.value.name, this.productForm.value.number))
     }
   }
 }

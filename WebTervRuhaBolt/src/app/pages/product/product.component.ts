@@ -12,13 +12,21 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProductComponent {
   public product:Product | undefined;
 
+
   constructor (
     private productService: ProductService,
     private router: Router,
     private route:ActivatedRoute,
   ){
     console.log(productService.getAllProducts())
-    let id:number = this.route.snapshot.params["productId"];
-    this.product=productService.getProductById(id)
+    let id:string = this.route.snapshot.params["productId"];
+    if(id != ""){
+      this.productService.getProductById(id).subscribe(
+        product =>{
+          if(product){
+            this.product = product;
+          }
+        });
+    }
   }
 }

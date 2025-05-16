@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {Profile} from '../models/Profile';
 import {ProfileService} from '../services/profile.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +13,11 @@ import {ProfileService} from '../services/profile.service';
 export class HeaderComponent {
   profile!:Profile;
   login:boolean=false;
-  constructor(private router:Router,private profileService: ProfileService) {
+  constructor(private router:Router,private profileService: ProfileService, private auth:AuthService) {
 
   }
   ngDoCheck() {
     this.profile=this.profileService.profile;
-    console.log(this.profile);
     if(this.profile.logIn){
       this.login=true;
     }
@@ -25,6 +25,7 @@ export class HeaderComponent {
   logout() {
     this.profile=new Profile();
     this.login=false;
+    this.auth.logout();
     console.log("logOut")
     this.profileService.removeLocalStorage()
     this.router.navigate(['/']);
