@@ -1,0 +1,16 @@
+
+<form [formGroup]="productForm"  (ngSubmit)="addProduct()">
+  <h1>Uj termek hozaadasa</h1>
+  <br>
+  <mat-form-field>
+    <mat-label>A termék neve</mat-label>
+    <input matInput formControlName="name" placeholder="Adjál megy egy uj terméket" value="efghjmhnb">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>A termék ára</mat-label>
+    <input matInput formControlName="number" type="number"  placeholder="Add meg a termék árát" value="1234567">
+  </mat-form-field>
+  <br>
+  <button mat-flat-button color="primary" type="submit" class="add-button">Add Product</button>
+</form>

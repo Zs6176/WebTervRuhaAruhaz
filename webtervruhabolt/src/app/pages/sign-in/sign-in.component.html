@@ -1,0 +1,22 @@
+
+<form [formGroup]="signInForm"  (ngSubmit)="signIn()">
+  <h1>Regisztrácio</h1>
+  <br>
+  <mat-form-field>
+    <mat-label>A felhasználoneved</mat-label>
+    <input matInput formControlName="name" placeholder="Add meg a felhasználóneved" type="text">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>A jelszavad</mat-label>
+    <input matInput formControlName="password"  placeholder="Add meg a jelszavad" type="password">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>A email cim</mat-label>
+    <input matInput formControlName="email"  placeholder="Add meg a email címed" type="email">
+  </mat-form-field>
+  <br>
+  <button mat-flat-button color="primary" type="submit" class="add-button">Belépés</button>
+</form>
+

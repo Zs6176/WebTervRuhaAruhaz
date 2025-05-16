@@ -1,0 +1,29 @@
+<div class="bg">
+  <div class="card-list-title">
+    <mat-card>
+      <mat-card-content>
+        <mat-select placeholder="Sorrend">
+          <mat-option value="desc" (onSelectionChange)="desc()">ár szentin növekvő sorrend</mat-option>
+          <mat-option value="novekvo" (onSelectionChange)="asc()">ár szentin csökkenő sorrend</mat-option>
+        </mat-select>
+      </mat-card-content>
+    </mat-card>
+    <br>
+  </div>
+  <ul class="card-list">
+    <li *ngFor="let product of products" class="card-list-item">
+      <a routerLink="/product/{{product.id}}" class="card-link">
+        <mat-card class="card">
+          <mat-card-content class="card-content">
+            <div class="card-title">
+              {{product.name}}
+            </div>
+            <div class="card-subtitle">
+              Price: {{product.price|price}}
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </a>
+    </li>
+  </ul>
+</div>

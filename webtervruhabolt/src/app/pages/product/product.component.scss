@@ -1,0 +1,55 @@
+:host {
+  display: flex;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgb(255, 254, 254), rgb(94, 94, 94));
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+#left {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#name {
+
+  font-size: 20px;
+}
+
+#tags {
+  font-size: 16px;
+}
+
+#right {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+
+#price {
+  font-size: 35px;
+  margin-right: 30px;
+}
+::-webkit-scrollbar {
+  margin-right: 30px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b9b9b9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
