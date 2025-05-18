@@ -30,6 +30,7 @@ export class SignInComponent {
     this.authService.signup( this.email,this.password).then(cred =>{
       console.log(cred);
       const user: User = {
+        docId: cred.user?.uid as string,
         id: cred.user?.uid as string,
         isAdmin: false,
         email: this.email,

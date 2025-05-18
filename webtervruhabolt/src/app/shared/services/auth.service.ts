@@ -31,4 +31,12 @@ export class AuthService {
       localStorage.setItem('user', JSON.stringify('null'));
       return this.auth.signOut();
     }
+
+    chengingPassword(password: string){
+      return this.auth.user.subscribe(user => {
+        if (user) {
+          user.updatePassword(password);
+        }
+      });
+    }
 }

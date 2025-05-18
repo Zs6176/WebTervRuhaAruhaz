@@ -1,4 +1,5 @@
 export class User {
+  docId!: string;
   id!:string;
   email!: string;
   isAdmin!: boolean;
